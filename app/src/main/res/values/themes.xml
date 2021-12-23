@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Wcs" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/color_3D7DFB</item>
+        <item name="colorPrimaryVariant">@color/color_3D7DFB</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/color_3D7DFB</item>
+        <item name="colorSecondaryVariant">@color/color_3D7DFB</item>
+        <item name="colorOnSecondary">@color/color_3D7DFB</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="launcher" parent="Theme.Wcs">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/transparent</item>
+        <item name="android:windowFullscreen">true</item>
+<!--        <item name="android:windowContentTransitions">true</item>-->
+<!--        <item name="android:windowActivityTransitions">true</item>-->
+<!--        <item name="android:windowAllowEnterTransitionOverlap">false</item>-->
+<!--        <item name="android:windowAllowReturnTransitionOverlap">false</item>-->
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+</resources>

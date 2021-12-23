@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="viewOutLineStrategy">
+        <attr name="clip_radius" format="dimension"></attr>
+        <attr name="clip_side" format="enum">
+            <enum name="all" value="0"></enum>
+            <enum name="left" value="1"></enum>
+            <enum name="top" value="2"></enum>
+            <enum name="right" value="3"></enum>
+            <enum name="bottom" value="4"></enum>
+        </attr>
+    </declare-styleable>
+
+
+    <!-- 对话框 -->
+    <style name="AddressDialog" parent="@android:style/Theme.Dialog">
+
+        <!-- 设置对话框的背景 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 设置对话框的动画 -->
+<!--        <item name="android:windowAnimationStyle">@style/AddressAnimationDialog</item>-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- 点击对话框外面消失对话框 -->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <!-- 对话框 的动画 -->
+    <style name="AddressAnimationDialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
+
+
+</resources>
