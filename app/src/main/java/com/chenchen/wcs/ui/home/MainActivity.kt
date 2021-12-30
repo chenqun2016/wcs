@@ -61,9 +61,8 @@ class MainActivity : BaseActivity() {
         mAdapter.setOnItemChildClickListener { adapter, view, position ->
             if (view.id == R.id.tv_6){
                 val bean = adapter.data[position] as StorageInfosBean.RecordsBean
-                val intent = Intent(this, DetailActivity::class.java)
-                intent.putExtra("markId",bean.prodMarkId)
-                startActivityForResult(intent,REQUEST_CODE_DETAIL)
+
+                DetailActivity.newInstance(this,bean.prodMarkId)
             }
         }
         binding.recyclerview.layoutManager = LinearLayoutManager(this)
@@ -71,7 +70,9 @@ class MainActivity : BaseActivity() {
         binding.tvScan.setOnClickListener {
             checkCameraPermissions()
         }
-
+        binding.tvSelf.setOnClickListener {
+            DetailActivity.newInstance(this,"")
+        }
         loadmoreUtils = object : LoadmoreUtils() {
             override fun getDatas(page: Int) {
                 super.getDatas(page)
@@ -106,9 +107,8 @@ class MainActivity : BaseActivity() {
             if(requestCode == REQUEST_CODE_SCAN ){
                 val result = CameraScan.parseScanResult(data)
 //                Toast.makeText(this,result,Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, DetailActivity::class.java)
-                intent.putExtra("markId",result)
-                startActivityForResult(intent,REQUEST_CODE_DETAIL)
+
+                DetailActivity.newInstance(this,result)
             }
         }
 

@@ -1,10 +1,14 @@
 package com.chenchen.wcs.ui.detail
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import android.text.TextUtils
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
@@ -13,6 +17,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +30,7 @@ import com.chenchen.wcs.R
 import com.chenchen.wcs.bean.CellsBean
 import com.chenchen.wcs.bean.StorageInfosBean
 import com.chenchen.wcs.bean.WareBean
+import com.chenchen.wcs.constants.Constants.Companion.REQUEST_CODE_DETAIL
 import com.chenchen.wcs.databinding.ActivityDetailBinding
 import com.chenchen.wcs.params.StartParams
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -35,6 +42,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
  * 功能描述：
  */
 class DetailActivity :BaseActivity() {
+    companion object{
+        fun newInstance(activity: Activity,markId:String?){
+            val intent = Intent(activity, DetailActivity::class.java)
+            intent.putExtra("markId",markId)
+            activity.startActivityForResult(intent,REQUEST_CODE_DETAIL)
+        }
+    }
     private val viewModel: DetailViewModel by viewModels()
     private lateinit var binding: ActivityDetailBinding
 
@@ -46,7 +60,7 @@ class DetailActivity :BaseActivity() {
 
     var currentCell : CellsBean? = null
 
-    var cellsDialog:CellsDialog? = null
+    var cellsDialog: CellsDialog? = null
 
     private  var  bottomSheetDialog:BottomSheetDialog? = null
     private  var mAdapter :WareAdapter? = null
@@ -57,6 +71,9 @@ class DetailActivity :BaseActivity() {
             if(msg.what == 999 && msg.obj.toString() == binding.tv4.text.toString() && binding.tv4.isFocused){
                 viewModel.checkCellPath(binding.tv4.text.toString())
             }
+            if(msg.what == 998 && msg.obj.toString() == binding.tv1.text.toString() && binding.tv1.isFocused){
+                viewModel.getByProdMarkId(binding.tv1.text.toString())
+            }
         }
     }
 
@@ -65,7 +82,6 @@ class DetailActivity :BaseActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         markId = intent.getStringExtra("markId").toString()
-
 
         initViews()
         initDatas()
@@ -84,10 +100,21 @@ class DetailActivity :BaseActivity() {
                 binding.tv26.text = currentData?.prodCreateDate
                 binding.tv27.text = currentData?.custName
 
+            }else{
+                binding.tv20.text = ""
+                binding.tv21.text = ""
+                binding.tv22.text = ""
+                binding.tv23.text = ""
+                binding.tv24.text = ""
+                binding.tv25.text = ""
+                binding.tv26.text = ""
+                binding.tv27.text = ""
             }
         })
 
-        viewModel.getByProdMarkId(markId+"")
+        if(!TextUtils.isEmpty(markId)){
+            viewModel.getByProdMarkId(markId+"")
+        }
 
         viewModel.wareBeans.observe(this, Observer {
             val data = it.getOrNull()
@@ -120,7 +147,15 @@ class DetailActivity :BaseActivity() {
         binding.layoutTitle.ivClose.setOnClickListener { finish() }
         binding.layoutTitle.title.text = "入库产品信息"
 
-        binding.tv1.text = markId
+        binding.tv1.setText(markId)
+        binding.tv1.addTextChangedListener {
+            if(binding.tv1.isFocused){
+                val obtainMessage = handler.obtainMessage()
+                obtainMessage.what = 998
+                obtainMessage.obj = it.toString()
+                handler.sendMessageDelayed(obtainMessage,1500)
+            }
+        }
 
         binding.tv2.setOnClickListener {
             binding.tv4.clearFocus()
@@ -137,7 +172,7 @@ class DetailActivity :BaseActivity() {
                 val obtainMessage = handler.obtainMessage()
                 obtainMessage.what = 999
                 obtainMessage.obj = it.toString()
-                handler.sendMessageDelayed(obtainMessage,2000)
+                handler.sendMessageDelayed(obtainMessage,1500)
             }
         }
 
