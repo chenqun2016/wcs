@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.chenchen.wcs.R;
+import com.chenchen.wcs.utils.StatusBar;
 import com.king.zxing.CaptureActivity;
 
 /**
@@ -35,6 +36,7 @@ public class EasyCaptureActivity extends CaptureActivity {
 
     @Override
     public void onCreate(Bundle icicle) {
+        StatusBar.fitSystemBar(this);
         super.onCreate(icicle);
 
         findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
