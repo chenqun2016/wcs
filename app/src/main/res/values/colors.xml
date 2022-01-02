@@ -4,7 +4,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--全局主题颜色值-->
-    <color name="theme_color">#ffffff</color>
+    <color name="theme_color">#ffF3F5F6</color>
 
     <color name="colorPrimary">#3D7DFB</color>
     <color name="colorPrimaryDark">#3D7DFB</color>

@@ -1,4 +1,4 @@
-package com.chenchen.wcs
+package com.chenchen.wcs.ui.base
 
 import androidx.appcompat.app.AppCompatActivity
 

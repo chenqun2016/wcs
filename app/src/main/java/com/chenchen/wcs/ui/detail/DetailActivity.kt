@@ -1,7 +1,6 @@
 package com.chenchen.wcs.ui.detail
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
@@ -14,18 +13,14 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.LinearLayoutCompat
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityOptionsCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.chenchen.wcs.BaseActivity
 import com.chenchen.wcs.R
 import com.chenchen.wcs.bean.CellsBean
 import com.chenchen.wcs.bean.StorageInfosBean
@@ -33,15 +28,16 @@ import com.chenchen.wcs.bean.WareBean
 import com.chenchen.wcs.constants.Constants.Companion.REQUEST_CODE_DETAIL
 import com.chenchen.wcs.databinding.ActivityDetailBinding
 import com.chenchen.wcs.params.StartParams
+import com.chenchen.wcs.ui.base.BaseActivity
+import com.chenchen.wcs.utils.StatusBar
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * 创建时间：2021/12/21
  * @Author： 陈陈陈
  * 功能描述：
  */
-class DetailActivity :BaseActivity() {
+class DetailActivity : BaseActivity() {
     companion object{
         fun newInstance(activity: Activity,markId:String?){
             val intent = Intent(activity, DetailActivity::class.java)
@@ -78,6 +74,7 @@ class DetailActivity :BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        StatusBar.fitSystemBar(this)
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)

@@ -1,14 +1,10 @@
 package com.chenchen.wcs.ui.detail
 
 import android.app.Activity
-import android.app.Dialog
-import android.content.Context
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -17,7 +13,7 @@ import com.chenchen.wcs.R
 import com.chenchen.wcs.bean.CellsBean
 import com.chenchen.wcs.databinding.DialogCellsBinding
 import com.chenchen.wcs.network.NetworkApi
-import com.chenchen.wcs.ui.BaseDialog
+import com.chenchen.wcs.ui.base.BaseDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

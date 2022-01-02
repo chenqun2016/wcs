@@ -6,7 +6,7 @@ import android.text.TextUtils
 import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
-import com.chenchen.wcs.BaseActivity
+import com.chenchen.wcs.ui.base.BaseActivity
 import com.chenchen.wcs.ui.home.MainActivity
 import com.chenchen.wcs.R
 import com.chenchen.wcs.constants.Constants

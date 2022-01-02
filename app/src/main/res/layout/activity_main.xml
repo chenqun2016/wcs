@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@drawable/bg_home"
     tools:context=".ui.home.MainActivity">
 
@@ -34,7 +35,7 @@
         android:gravity="center"
         android:textSize="18sp"
         android:textColor="@color/color_3D7DFB"
-        android:background="@color/white"
+        android:background="@drawable/bg_round20dp_white_left"
         app:layout_constraintRight_toLeftOf="@+id/tv_scan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -47,7 +48,7 @@
         android:gravity="center"
         android:textSize="18sp"
         android:textColor="@color/white"
-        android:background="@color/color_3D7DFB"
+        android:background="@drawable/bg_round20dp_blue_right"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/tv_self"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.chenchen.wcs.BaseActivity
+import com.chenchen.wcs.ui.base.BaseActivity
 import com.chenchen.wcs.R
 import com.chenchen.wcs.bean.StorageInfosBean
 import com.chenchen.wcs.constants.Constants.Companion.RC_CAMERA
@@ -24,6 +23,7 @@ import com.chenchen.wcs.databinding.ActivityMainBinding
 import com.chenchen.wcs.ui.EasyCaptureActivity
 import com.chenchen.wcs.ui.detail.DetailActivity
 import com.chenchen.wcs.utils.LoadmoreUtils
+import com.chenchen.wcs.utils.StatusBar
 import com.king.zxing.CameraScan
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
@@ -33,6 +33,7 @@ class MainActivity : BaseActivity() {
     private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        StatusBar.fitSystemBar(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

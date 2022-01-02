@@ -1,4 +1,4 @@
-package com.chenchen.wcs;
+package com.chenchen.wcs.utils;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;

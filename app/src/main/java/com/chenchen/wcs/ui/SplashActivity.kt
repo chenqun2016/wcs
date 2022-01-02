@@ -1,8 +1,9 @@
-package com.chenchen.wcs
+package com.chenchen.wcs.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import com.chenchen.wcs.ui.base.BaseActivity
 import com.chenchen.wcs.constants.Constants
 import com.chenchen.wcs.databinding.ActivitySplashBinding
 import com.chenchen.wcs.ui.home.MainActivity
